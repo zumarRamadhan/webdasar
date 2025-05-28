@@ -1,12 +1,18 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['username'])) {
-    // User is already logged in, redirect to welcome page  
     header("Location: login.php");
+    exit();
 }
+
+$username = $_SESSION['username'];
+$login_count = $_SESSION['login_count'];
 ?>
+
+<!DOCTYPE html>
 <html>
-    <head>
+ <head>
         <title>::Login Page::</title>
         <style type="text/css">
             body{
@@ -17,7 +23,7 @@ if (!isset($_SESSION['username'])) {
             }
         </style>
     </head>
-    <body>
-        <h1><?php echo "Selamat datang " . $_SESSION['username']; ?></h1>
-    </body>
+<body>
+    <h1>Selamat datang <?php echo htmlspecialchars($username); ?> ke - <?php echo $login_count; ?></h1>
+</body>
 </html>

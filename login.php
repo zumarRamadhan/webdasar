@@ -1,13 +1,25 @@
 <?php
 session_start();
+
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    // User is already logged in, redirect to welcome page  
     $username = $_POST['username'];
     $password = $_POST['password'];
+
     if ($username == "usm" && $password == "123") {
         // Set session variable
         $_SESSION['username'] = $username;
+
+        // Inisialisasi atau increment login count
+        if (!isset($_SESSION['login_count'])) {
+            $_SESSION['login_count'] = 1;
+        } else {
+            $_SESSION['login_count'] += 1;
+        }
+
         header("Location: dashboard.php");
+        exit();
+    } else {
+        echo "Username atau password salah.";
     }
 }
 ?>
