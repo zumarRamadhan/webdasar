@@ -1,31 +1,19 @@
 <?php
 session_start();
-
 if (isset($_POST['username']) && isset($_POST['password'])) {
+
     $username = $_POST['username'];
     $password = $_POST['password'];
-
     if ($username == "usm" && $password == "123") {
-        // Set session variable
+
         $_SESSION['username'] = $username;
-
-        // Inisialisasi atau increment login count
-        if (!isset($_SESSION['login_count'])) {
-            $_SESSION['login_count'] = 1;
-        } else {
-            $_SESSION['login_count'] += 1;
-        }
-
         header("Location: dashboard.php");
-        exit();
-    } else {
-        echo "Username atau password salah.";
     }
 }
 ?>
 <html>
     <head>
-        <title>::Login Page::</title>
+        <title>Login Page</title>
         <style type="text/css">
             body{
                 display: flex;
@@ -33,22 +21,28 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 align-items: center;
                 height: 100vh;
                 background-size: cover;
-                background-image: url("https://cdn.arstechnica.net/wp-content/uploads/2023/06/bliss-update-1440x960.jpg");
+                background: #020024;
+                background-image: url("bg.png");
+                background-attachment: fixed;
             }
             table{
                 background-color: white;
-                border: 3px solid grey;
+                border: 4px solid #ddd;
                 padding: 20px;
-                border-radius: 10px;
+                border-radius: 20px;
                 font-family:Arial, Helvetica, sans-serif;
+                box-shadow: 0px 10px 20px black
             }
             td{
-                padding: 5px;
+                padding: 10px;
             }
             button{
-                background-color: greenyellow;
+                background-color: #4F7BFF;
+                color: white;
                 padding: 10px;
+                border: 0;
                 border-radius: 5px;
+                width: 100%;
             }
         </style>
     </head>
@@ -56,7 +50,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <form action="login.php" method="post">
          <table>
             <tr>
-                <td colspan="2" style="text-align: center;" >LOGIN</td>
+                <td colspan="2" style="text-align: center; font-weight: bold; font-size: 30px;" >LOGIN</td>
             </tr>
             <tr>
                 <td>Username</td>
