@@ -249,7 +249,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nama']) && isset($_POS
     </style>
 </head>
 <body>
-
     <h1><?php echo "Selamat datang " . $_SESSION['username'] . " Ke-" . $_SESSION['counter']; ?></h1>
 
     <form method="post">
