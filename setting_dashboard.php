@@ -32,7 +32,6 @@
   <div class="container">
     <h3 class="mb-4 text-center fw-bold">Pengaturan Akun</h3>
 
-    <!-- Form Ubah Username -->
     <div class="card mb-4 p-4">
       <h5 class="mb-3">Ubah Username</h5>
       <form method="POST" action="update_username.php">
@@ -48,7 +47,6 @@
       </form>
     </div>
 
-    <!-- Form Ubah Password -->
     <div class="card mb-4 p-4">
       <h5 class="mb-3">Ubah Password</h5>
       <form method="POST" action="update_password.php">

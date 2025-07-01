@@ -13,14 +13,11 @@
 <body class="container py-5">
 
   <h3>✏️Edit Username & Password Login</h3>
-
-  <!-- Bootstrap Alert Placeholder -->
   <div id="alertBox" class="alert alert-success alert-dismissible fade show d-none mt-4" role="alert">
     <span id="alertMessage"></span>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
-  <!-- Form -->
   <form id="userForm" class="mt-4" onsubmit="return saveUser()">
     <div class="mb-3">
       <label for="username" class="form-label">Masukkan Username Baru</label>
@@ -34,11 +31,9 @@
     <a href="bootstrap_dashboard.php" class="btn btn-danger ms-2">Kembali</a>
   </form>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Load user saat halaman dibuka
     window.addEventListener("DOMContentLoaded", () => {
       const savedUser = localStorage.getItem("loginUser");
       if (savedUser) {
@@ -53,19 +48,17 @@
       const password = document.getElementById("password").value.trim();
       localStorage.setItem("loginUser", JSON.stringify({ username, password }));
 
-      // Tampilkan alert Bootstrap
       const alertBox = document.getElementById("alertBox");
       const alertMessage = document.getElementById("alertMessage");
       alertMessage.textContent = "User login berhasil disimpan!";
       alertBox.classList.remove("d-none");
 
-      // Opsional: auto-hide setelah 3 detik
       setTimeout(() => {
         const bsAlert = bootstrap.Alert.getOrCreateInstance(alertBox);
         bsAlert.close();
       }, 3000);
 
-      return false; // Hindari reload form
+      return false; 
     }
   </script>
 </body>
