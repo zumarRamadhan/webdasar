@@ -21,7 +21,7 @@
     <link href="sign-in.css" rel="stylesheet">
     <style>
         html,
-         body {
+        body {
             background-size: cover;
             background-position: center;
             transition: background-image 1s ease-in;
@@ -42,7 +42,7 @@
         .form-signin {
             max-width: 330px;
             padding: 1rem;
-            background-color:rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
         .form-signin .form-floating:focus-within {
@@ -121,7 +121,7 @@
             --bs-btn-bg: var(--bd-violet-bg);
             --bs-btn-border-color: var(--bd-violet-bg);
             --bs-btn-hover-color: var(--bs-white);
-            --bs-btn-hover-bg:rgb(19, 100, 182);
+            --bs-btn-hover-bg: rgb(19, 100, 182);
             --bs-btn-hover-border-color: #1574D0;
             --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
             --bs-btn-active-color: var(--bs-btn-hover-color);
@@ -144,7 +144,7 @@
     </style>
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary"> 
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
@@ -185,7 +185,7 @@
                     Auto
                     <svg class="bi ms-auto d-none" aria-hidden="true">
                         <use href="#check2"></use>
-                    </svg> </button> 
+                    </svg> </button>
             </li>
         </ul>
     </div>
@@ -220,20 +220,21 @@
     </main>
 
     <script>
-          document.getElementById("loginForm").addEventListener("submit", function (e) {
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
             e.preventDefault();
 
-            const username = document.getElementById("floatingInput").value;
-            const password = document.getElementById("floatingPassword").value;
+            const username = document.getElementById("floatingInput").value.trim();
+            const password = document.getElementById("floatingPassword").value.trim();
             const alertBox = document.getElementById("alertBox");
 
-            if (username === "zumar" && password === "123") {
+            const savedUser = JSON.parse(localStorage.getItem("loginUser"));
+
+            if (savedUser && username === savedUser.username && password === savedUser.password) {
                 window.location.href = "bootstrap_dashboard.php";
             } else {
                 alertBox.classList.remove("d-none");
             }
         });
-
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (prefersDark) {
             document.documentElement.setAttribute('data-bs-theme', 'dark');
@@ -244,6 +245,6 @@
 
     <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text.javascript">
-</body>
+        </body>
 
 </html>
